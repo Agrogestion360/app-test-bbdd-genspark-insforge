@@ -1,21 +1,43 @@
-```txt
+# app-test-workflow-bbdd
+
+App de test para validar el workflow completo:
+**Genspark Sandbox → GitHub → Coolify (VPS) → InsForge (PostgreSQL)**
+
+## Stack
+
+- **Frontend + Backend**: Node.js + Hono framework
+- **Base de datos**: InsForge (PostgreSQL self-hosted)
+- **Deploy**: Coolify en VPS
+- **CI/CD**: GitHub → Coolify webhook automático
+
+## Funcionalidad
+
+Lista de tareas (TODO) simple que prueba:
+- ✅ GET tareas
+- ✅ POST nueva tarea
+- ✅ PATCH (completar/descompletar)
+- ✅ DELETE tarea
+
+## Variables de entorno
+
+Crear `.env` con:
+```
+INSFORGE_URL=https://tu-insforge.com
+INSFORGE_KEY=tu-api-key
+```
+
+## Desarrollo local
+
+```bash
 npm install
 npm run dev
 ```
 
-```txt
-npm run deploy
-```
+## Deploy
 
-[For generating/synchronizing types based on your Worker configuration run](https://developers.cloudflare.com/workers/wrangler/commands/#types):
+El deploy es automático via Coolify al hacer push a `main`.
 
-```txt
-npm run cf-typegen
-```
+## URLs
 
-Pass the `CloudflareBindings` as generics when instantiation `Hono`:
-
-```ts
-// src/index.ts
-const app = new Hono<{ Bindings: CloudflareBindings }>()
-```
+- **App**: https://tu-dominio.com
+- **InsForge**: https://insforge.agrogestionx.com
